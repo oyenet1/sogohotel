@@ -49,7 +49,7 @@
     <header class="site-header js-site-header">
         <div class="container-fluid">
             <div class="row align-items-center">
-                <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Sogo Hotel</a></div>
+                <div class="col-6 col-lg-4 site-logo" data-aos="fade"><a href="index.html">Zenith City</a></div>
                 <div class="col-6 col-lg-8">
 
 
@@ -86,6 +86,20 @@
 
     {{-- main page here --}}
     @yield('contents')
+
+    <section class="section bg-image overlay" style="background-image: url('/images/hero_4.jpg');">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-6 text-center mb-4 mb-md-0 text-md-left" data-aos="fade-up">
+                    <h2 class="text-white font-weight-bold">A Best Place To Stay. Reserve Now!</h2>
+                </div>
+                <div class="col-12 col-md-6 text-center text-md-right" data-aos="fade-up" data-aos-delay="200">
+                    <a href="reservation.html" class="btn btn-outline-white-primary py-3 text-white px-5">Reserve
+                        Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="section footer-section">
         <div class="container">
@@ -137,8 +151,10 @@
                     Copyright &copy;
                     <script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="icon-heart-o"
-                        aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        //
+                    </script>
+                    All rights reserved <a href="https://bowofade.com" target="_blank">Roomstatus</a>
+                    {{-- | This template is made with <i class="icon-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> --}}
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
 
@@ -181,6 +197,7 @@
     {{-- alert conponent --}}
     {{-- <x-livewire-alert::scripts /> --}}
     @stack('scripts')
+    @include('sweetalert::alert')
     <script>
         window.addEventListener('swal:success',
             function(e) {
