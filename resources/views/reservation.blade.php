@@ -57,7 +57,9 @@
                         </li> --}}
                     </ul>
                     </p>
-                    <p><a href="#" class="btn btn-primary text-white">Book Now</a></p>
+                    <p>
+                        <button href="#book" class="btn btn-primary text-white">Book Now</button>
+                    </p>
                 </div>
             </div>
             {{-- <div class="site-block-half d-block d-lg-flex bg-white mt-4" data-aos="fade" data-aos-delay="200">
@@ -81,42 +83,63 @@
             <div class="row">
                 <div class="col-md-7" data-aos="fade-up" data-aos-delay="100">
 
-                    <form action="" method="post" class="bg-white p-md-5 p-4 mb-5 border">
+                    <form action="{{ route('book', $room['id']) }}" method="post" class="bg-white p-md-5 p-4 mb-5 border">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="fname">First Name</label>
                                 <input type="text" id="fname" value="{{ old('firstname') }}" name="firstname"
                                     class="form-control">
+                                @error('firstname')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="lname">Last Name</label>
-                                <input type="text" id="fname" name="lastname" value="{{ old('lastname') }}"
+                                <input type="text" id="lname" name="lastname" value="{{ old('lastname') }}"
                                     class="form-control">
+                                @error('lastname')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
 
                         </div>
 
-                        <div class="row">
+                        <div class="row" id="book">
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="phone">Phone</label>
                                 <input type="text" id="phone" name="phone" value="{{ old('phone') }}"
                                     class="form-control ">
+                                @error('phone')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6 form-group">
                                 <label class="text-black font-weight-bold" for="email">Email</label>
                                 <input type="email" id="email" name="email" value="{{ old('email') }}"
                                     class="form-control ">
+                                @error('email')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <label class="text-black font-weight-bold" for="checkin_date">Date Check In</label>
-                                <input type="text" id="checkin_date" class="form-control">
+                                <label class="text-black font-weight-bold" for="checked_in">Date Check In</label>
+                                <input type="date" id="checked_in" name="checked_in" value="{{ old('checked_in') }}"
+                                    class="form-control">
+                                @error('checked_in')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6 form-group">
-                                <label class="text-black font-weight-bold" for="checkout_date">Date Check Out</label>
-                                <input type="text" id="checkout_date" class="form-control">
+                                <label class="text-black font-weight-bold" for="checked_out">Date Check Out</label>
+                                <input type="date" id="checked_out" name="checked_out"
+                                    value="{{ old('checked_out') }}" class="form-control">
+                                @error('checked_out')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
 

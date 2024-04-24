@@ -16,9 +16,11 @@ class ReservationController extends Controller
             'lastname' => ['required'],
             'email' => ['required', 'email'],
             'phone' => ['required', 'numeric'],
-            'checked_in' => ['required', 'date'],
-            'checked_out' => ['required', 'date'],
-        ]);
+            'checked_in' => ['required', 'date', 'after:yesterday'],
+            'checked_out' => ['required', 'date', 'after:checked_in'],
+        ], []);
+
+        dd($data);
 
         $response = $response = Http::post('https://roomstatus.uk/api/v1/frontend/' . $id . '/reserve/', $data);
 

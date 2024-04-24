@@ -39,4 +39,4 @@ Route::get('/room/{id}/reserve', function ($id) {
     return view('reservation', compact(['room']));
 });
 
-Route::post('/room/{id}/reserve', [ReservationController::class, '']);
+Route::post('/room/{id}/reserve', [ReservationController::class, 'bookRoom'])->name('book');
