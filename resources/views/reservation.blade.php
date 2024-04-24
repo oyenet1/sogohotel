@@ -58,7 +58,11 @@
                     </ul>
                     </p>
                     <p>
-                        <button href="#book" class="btn btn-primary text-white">Book Now</button>
+                        @if ($room['status'] == 'available')
+                            <button href="#book" class="btn btn-primary text-white">Book Now</button>
+                        @else
+                            <p class="btn bg-secondary text-white disabled">Not Available</p>
+                        @endif
                     </p>
                 </div>
             </div>
@@ -146,8 +150,12 @@
 
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="submit" value="Reserve Now"
-                                    class="btn btn-primary text-white py-3 px-5 font-weight-bold">
+                                @if ($room['status'] == 'available')
+                                    <input type="submit" value="Reserve Now"
+                                        class="btn btn-primary text-white py-3 px-5 font-weight-bold">
+                                @else
+                                    <p class="btn bg-secondary text-white disabled">Not Available</p>
+                                @endif
                             </div>
                         </div>
                     </form>

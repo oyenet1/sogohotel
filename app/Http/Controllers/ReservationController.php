@@ -20,12 +20,13 @@ class ReservationController extends Controller
             'checked_out' => ['required', 'date', 'after:checked_in'],
         ], []);
 
-        dd($data);
-
         $response = $response = Http::post('https://roomstatus.uk/api/v1/frontend/' . $id . '/reserve/', $data);
 
-        if ($response->ok()) {
+        if ($response->status() == 201) {
             Alert::success('Room Booked', 'Your reservations is successfully');
+            return redirect()->back()->with('success', 'Your reservations is successfully');
+        } else {
+            Alert::error('Booking Error', 'Something went wrong with your booking');
         }
     }
 }
