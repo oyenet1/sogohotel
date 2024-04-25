@@ -25,21 +25,31 @@
             <div class="row check-availabilty" id="next">
                 <div class="block-32" data-aos="fade-up" data-aos-offset="-200">
 
-                    <form action="#">
+                    <form action="{{ route('rooms') }}" method="POST">
+                        @method('post')
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-4">
-                                <label for="checkin_date" class="font-weight-bold text-black">Check In</label>
+                                <label for="checked_in" class="font-weight-bold text-black">Check In</label>
                                 <div class="field-icon-wrap">
                                     <div class="icon"><span class="icon-calendar"></span></div>
-                                    <input type="text" id="checkin_date" class="form-control">
+                                    <input type="date" name="checked_in" value="{{ old('checked_in') }}" id="checked_in"
+                                        class="form-control">
                                 </div>
+                                @error('checked_in')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-6 mb-3 mb-lg-0 col-lg-4">
-                                <label for="checkout_date" class="font-weight-bold text-black">Check Out</label>
+                                <label for="checked_out" class="font-weight-bold text-black">Check Out</label>
                                 <div class="field-icon-wrap">
                                     <div class="icon"><span class="icon-calendar"></span></div>
-                                    <input type="text" id="checkout_date" class="form-control">
+                                    <input type="date" name="checked_out" value="{{ old('checked_out') }}"
+                                        id="checked_out" class="form-control">
                                 </div>
+                                @error('checked_out')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                             {{-- <div class="col-md-6 mb-3 mb-md-0 col-lg-3">
                                 <div class="row">

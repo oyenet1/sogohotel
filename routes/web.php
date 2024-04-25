@@ -28,7 +28,7 @@ Route::get('/rooms/{id}', function ($id) {
     return view('rooms', compact(['rooms']));
 })->name('room.categories');
 
-Route::get('/rooms', function (Request $request) {
+Route::post('/rooms', function (Request $request) {
 
     $data = $request->validate([
         'checked_in' => 'required|date',
@@ -36,9 +36,10 @@ Route::get('/rooms', function (Request $request) {
     ]);
 
     $response = $response = Http::post('https://roomstatus.uk/api/v1/frontend/ZCHS241/rooms', [
-        'checked_in' => $data['checkded_in'],
-        'checked_out' => $data['checkded_out'],
+        'checked_in' => $data['checked_in'],
+        'checked_out' => $data['checked_out'],
     ]);
+
     $rooms = $response->json();
     return view('rooms', compact(['rooms']));
 })->name('rooms');
